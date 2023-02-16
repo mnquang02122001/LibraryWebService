@@ -3,7 +3,7 @@ import morgan from 'morgan';
 import cors from 'cors';
 import { config } from './config/config';
 import { connectDb } from './database/database';
-
+import authRouter from './routes/AuthRoute';
 const app = express();
 const PORT = config.server.port;
 
@@ -34,6 +34,7 @@ app.use((req, res, next) => {
 // Routes
 
 // Health check
+app.use('/api/v1', authRouter);
 app.get('/', (req, res) => {
     return res.status(200).json({ message: 'Server is OK' });
 });

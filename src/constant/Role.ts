@@ -1,2 +1,2 @@
-export const ROOT = 'ROOT';
-export const ADMIN = 'ADMIN';
+export const ROOT: string = 'ROOT';
+export const ADMIN: string = 'ADMIN';
