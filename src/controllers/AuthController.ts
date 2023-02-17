@@ -4,20 +4,20 @@ import * as ROOT from '../constant/Root';
 import * as CODE from '../constant/ResponseCode';
 import { generateToken } from '../services/authentication/jwt';
 import { comparePassword } from '../services/authentication/password';
-import authValidate from './validation/AuthValidator';
+import validateAuth from './validators/AuthValidator';
 export const authController = {
     logIn: async (req: Request, res: Response, next: NextFunction) => {
-        const { email, userPassword } = req.body;
-        if (!authValidate(req.body)) {
+        if (!validateAuth(req.body)) {
             return res.status(400).json({
                 code: CODE.INVALID_CREDENTIALS,
                 data: 'Invalid email or password'
             });
         }
+        const { email, userPassword } = req.body;
         try {
-            let jwtToken: unknown = '';
+            let jwtToken = '';
             if (email === ROOT.EMAIL && userPassword === ROOT.PASSWORD) {
-                jwtToken = await generateToken({
+                jwtToken = <string>await generateToken({
                     email,
                     role: 'ROOT'
                 });
@@ -30,11 +30,18 @@ export const authController = {
                     }
                 });
             }
+
+            if (email === ROOT.EMAIL && userPassword !== ROOT.PASSWORD) {
+                return res.status(400).json({
+                    code: CODE.WRONG_PASS,
+                    data: 'Password wrong'
+                });
+            }
             const admin = await Admin.findOne({ email: email }).exec();
             if (admin) {
                 const passwordChecked = await comparePassword(userPassword, admin.password);
                 if (passwordChecked) {
-                    jwtToken = await generateToken({
+                    jwtToken = <string>await generateToken({
                         email,
                         role: 'ADMIN'
                     });
@@ -57,11 +64,11 @@ export const authController = {
                 code: CODE.INVALID_CREDENTIALS,
                 data: "Account doesn't exist"
             });
-        } catch (err) {
-            console.log(err);
+        } catch (error) {
+            console.log(error);
             return res.status(500).json({
                 code: CODE.UNKNOWN_ERROR,
-                data: err
+                data: error
             });
         }
     }

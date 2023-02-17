@@ -20,8 +20,12 @@ export const authenticate = async (req: Request, res: Response, next: NextFuncti
         const decoded = <IDecoded>await verifyToken(token);
         req.authToken = decoded.admin;
         next();
-    } catch (err) {
-        console.log(err);
-        return res.status(400).json({ err });
+    } catch (code) {
+        console.log(code);
+        if (code == CODE.TOKEN_EXPIRED) {
+            return res.status(400).json({ code, data: 'TOKEN EXPIRED' });
+        } else {
+            return res.status(400).json({ code, data: 'INVALID TOKEN' });
+        }
     }
 };

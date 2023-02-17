@@ -19,7 +19,8 @@ const adminSchema = new Schema<IAdmin>(
         },
         email: {
             type: String,
-            required: true
+            required: true,
+            unique: true
         },
         role: {
             type: String,
