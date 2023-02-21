@@ -3,7 +3,7 @@ import { Schema, model } from 'mongoose';
 export interface IBook {
     name: string;
     author: string;
-    publishDate: Schema.Types.Date;
+    publishDate: Date;
     price: number;
 }
 

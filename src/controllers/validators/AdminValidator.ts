@@ -27,7 +27,7 @@ const adminCreatedSchema: JSONSchemaType<IAdmin> = {
             pattern: rolePattern
         }
     },
-    required: ['username', 'password', 'email', 'role'],
+    required: ['username', 'password', 'email'],
     additionalProperties: false
 };
 const adminUpdatedSchema: JSONSchemaType<IAdmin> = {

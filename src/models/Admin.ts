@@ -24,7 +24,7 @@ const adminSchema = new Schema<IAdmin>(
         },
         role: {
             type: String,
-            required: true
+            default: 'ADMIN'
         }
     },
     {

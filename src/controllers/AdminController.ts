@@ -79,13 +79,14 @@ export const adminController = {
         }
     },
     updateAdmin: async (req: Request, res: Response, next: NextFunction) => {
+        const adminId = req.params.adminId;
+
         if (!validateAdminUpdated(req.body)) {
             return res.status(400).json({
                 code: CODE.INVALID_CREDENTIALS,
                 data: 'Invalid data'
             });
         }
-        const adminId = req.params.adminId;
         const { password } = req.body;
         try {
             if (password) {

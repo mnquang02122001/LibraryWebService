@@ -3,8 +3,8 @@ import { Schema, model } from 'mongoose';
 export interface IUser {
     name: string;
     email: string;
-    newestBorrowDate?: Schema.Types.Date;
-    timeBorrow?: number;
+    newestBorrowDate: Date;
+    timeBorrow: number;
 }
 
 const userSchema = new Schema<IUser>(
@@ -15,13 +15,16 @@ const userSchema = new Schema<IUser>(
         },
         email: {
             type: String,
-            required: true
+            required: true,
+            unique: true
         },
         newestBorrowDate: {
-            type: Date
+            type: Date,
+            default: new Date('2023-01-01')
         },
         timeBorrow: {
-            type: Number
+            type: Number,
+            default: 0
         }
     },
     {
