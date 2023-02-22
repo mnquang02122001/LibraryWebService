@@ -6,6 +6,7 @@ import { connectDb } from './database/database';
 import authRouter from './routes/AuthRoute';
 import adminRouter from './routes/AdminRoute';
 import userRouter from './routes/UserRoute';
+import bookRouter from './routes/BookRoute';
 const app = express();
 const PORT = config.server.port;
 
@@ -46,6 +47,7 @@ app.use((req, res, next) => {
 app.use('/api/v1/authenticate', authRouter);
 app.use('/api/v1/admins', adminRouter);
 app.use('/api/v1/users', userRouter);
+app.use('/api/v1/books', bookRouter);
 app.get('/', (req, res) => {
     return res.status(200).json({ message: 'Server is OK' });
 });

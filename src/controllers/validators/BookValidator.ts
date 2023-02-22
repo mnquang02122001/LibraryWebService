@@ -1,6 +1,5 @@
 import Ajv, { JSONSchemaType } from 'ajv';
 import addFormats from 'ajv-formats';
-import { IBook } from '../../models/Book';
 const ajv = new Ajv();
 addFormats(ajv);
 export interface IBookAjv {
