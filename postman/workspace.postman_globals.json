@@ -1,0 +1,27 @@
+{
+	"id": "8d30ca5e-1165-4697-8fcb-9144f8139616",
+	"values": [
+		{
+			"key": "BASE_URL",
+			"value": "http://localhost:5000/api/v1",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "ROOT_JWT",
+			"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZG1pbiI6eyJlbWFpbCI6InJvb3RAZ21haWwuY29tIiwicm9sZSI6IlJPT1QifSwiaWF0IjoxNjc3MTQ1OTg5LCJleHAiOjE2NzcxNDk1ODl9.ghwdRv0RGdvYcKmk7GyIx54eyP28UVhuQ3fsK1vtv7A",
+			"type": "default",
+			"enabled": true
+		},
+		{
+			"key": "ADMIN_JWT",
+			"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhZG1pbiI6eyJlbWFpbCI6Im1ucXVhbmcxMjNAZ21haWwuY29tIiwicm9sZSI6IkFETUlOIn0sImlhdCI6MTY3NzE0NTk1MiwiZXhwIjoxNjc3MTQ5NTUyfQ.DzhPMsedU5r5nKQy5PamD1_XdTDXz_zquhQzZ0fmGjI",
+			"type": "default",
+			"enabled": true
+		}
+	],
+	"name": "Globals",
+	"_postman_variable_scope": "globals",
+	"_postman_exported_at": "2023-02-23T10:57:49.368Z",
+	"_postman_exported_using": "Postman/10.10.6"
+}

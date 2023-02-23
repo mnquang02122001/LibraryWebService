@@ -1,0 +1,197 @@
+{
+	"info": {
+		"_postman_id": "3d5e25f6-0dab-48a6-a57d-d2e7418d1d3b",
+		"name": "User",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "15372984"
+	},
+	"item": [
+		{
+			"name": "Add a user",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{ADMIN_JWT}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Mai Nhat Thanh\",\r\n    \"email\": \"thanh240206@gmail.com\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BASE_URL}}/users/addUser",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"users",
+						"addUser"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get a user",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{ADMIN_JWT}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{BASE_URL}}/users/:userId",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"users",
+						":userId"
+					],
+					"variable": [
+						{
+							"key": "userId",
+							"value": "63f4ee80e47d324a1179f203"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get all users",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{ADMIN_JWT}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{BASE_URL}}/users/:page/:size?searchBy=&searchValue=&sortBy=&sortValue=",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"users",
+						":page",
+						":size"
+					],
+					"query": [
+						{
+							"key": "searchBy",
+							"value": ""
+						},
+						{
+							"key": "searchValue",
+							"value": ""
+						},
+						{
+							"key": "sortBy",
+							"value": ""
+						},
+						{
+							"key": "sortValue",
+							"value": ""
+						}
+					],
+					"variable": [
+						{
+							"key": "page",
+							"value": "0"
+						},
+						{
+							"key": "size",
+							"value": "10"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete a user",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{ADMIN_JWT}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{BASE_URL}}/users/deleteUser/:userId",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"users",
+						"deleteUser",
+						":userId"
+					],
+					"variable": [
+						{
+							"key": "userId",
+							"value": "63f4ee80e47d324a1179f203"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update a user",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{ADMIN_JWT}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"Nguyen Van B\",\r\n    \"timeBorrow\": 1\r\n    \r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BASE_URL}}/users/editUser/:userId",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"users",
+						"editUser",
+						":userId"
+					],
+					"variable": [
+						{
+							"key": "userId",
+							"value": "63f4defc98873f7107e15a7b"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

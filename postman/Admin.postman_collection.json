@@ -1,0 +1,167 @@
+{
+	"info": {
+		"_postman_id": "7d30e2ff-9f62-4bab-9f01-d0bad6089add",
+		"name": "Admin",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "15372984"
+	},
+	"item": [
+		{
+			"name": "Get all admins",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{ROOT_JWT}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{BASE_URL}}/admins",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"admins"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get a admin",
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{ROOT_JWT}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{BASE_URL}}/admins/:adminId",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"admins",
+						":adminId"
+					],
+					"variable": [
+						{
+							"key": "adminId",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Add a admin",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{ROOT_JWT}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"username\": \"mnquang1234\",\r\n    \"password\": \"mnq54321\",\r\n    \"email\": \"mnquang1234@gmail.com\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BASE_URL}}/admins/addAdmin",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"admins",
+						"addAdmin"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Update a admin",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{ROOT_JWT}}",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"password\": \"mnq54321\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{BASE_URL}}/admins/editAdmin/:adminId",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"admins",
+						"editAdmin",
+						":adminId"
+					],
+					"variable": [
+						{
+							"key": "adminId",
+							"value": "63ef69f2067d0360129ad805"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete a admin",
+			"request": {
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "{{ROOT_JWT}}",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "{{BASE_URL}}/admins/deleteAdmin/:adminId",
+					"host": [
+						"{{BASE_URL}}"
+					],
+					"path": [
+						"admins",
+						"deleteAdmin",
+						":adminId"
+					],
+					"variable": [
+						{
+							"key": "adminId",
+							"value": "63ef6a64067d0360129ad808"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
