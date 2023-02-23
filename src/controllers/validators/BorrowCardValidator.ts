@@ -2,13 +2,12 @@ import Ajv, { JSONSchemaType } from 'ajv';
 import addFormats from 'ajv-formats';
 const ajv = new Ajv();
 addFormats(ajv);
-
-ajv.addFormat('objectid', /^[a-f\d]{24}$/i);
+const objectIdPattern = '^[0-9a-fA-F]{24}$';
 export interface IBorrowCardAjv {
-    bookId: string[];
+    bookId: string;
     userId: string;
     adminId: string;
-    borrowDate: string;
+    borrowDate?: string;
     borrowTime: number;
 }
 
@@ -16,30 +15,28 @@ const borrowCardCreatedSchema: JSONSchemaType<IBorrowCardAjv> = {
     type: 'object',
     properties: {
         bookId: {
-            type: 'array',
-            items: {
-                type: 'string',
-                format: 'objectid'
-            }
+            type: 'string',
+            pattern: objectIdPattern
         },
         userId: {
             type: 'string',
-            format: 'objectId'
+            pattern: objectIdPattern
         },
         adminId: {
             type: 'string',
-            format: 'objectId'
+            pattern: objectIdPattern
         },
         borrowDate: {
             type: 'string',
-            format: 'date'
+            format: 'date',
+            nullable: true
         },
         borrowTime: {
             type: 'integer',
             minimum: 0
         }
     },
-    required: ['bookId', 'userId', 'adminId', 'borrowDate', 'borrowTime'],
+    required: ['bookId', 'userId', 'adminId', 'borrowTime'],
     additionalProperties: false
 };
 
@@ -47,23 +44,21 @@ const borrowCardUpdatedSchema: JSONSchemaType<IBorrowCardAjv> = {
     type: 'object',
     properties: {
         bookId: {
-            type: 'array',
-            items: {
-                type: 'string',
-                format: 'objectid'
-            }
+            type: 'string',
+            pattern: objectIdPattern
         },
         userId: {
             type: 'string',
-            format: 'objectId'
+            pattern: objectIdPattern
         },
         adminId: {
             type: 'string',
-            format: 'objectId'
+            pattern: objectIdPattern
         },
         borrowDate: {
             type: 'string',
-            format: 'date'
+            format: 'date',
+            nullable: true
         },
         borrowTime: {
             type: 'integer',

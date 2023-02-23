@@ -1,7 +1,7 @@
 import { Schema, model } from 'mongoose';
 
 export interface IBorrowCard {
-    bookId: Schema.Types.ObjectId[];
+    bookId: Schema.Types.ObjectId;
     userId: Schema.Types.ObjectId;
     adminId: Schema.Types.ObjectId;
     borrowDate: Date;
@@ -10,13 +10,11 @@ export interface IBorrowCard {
 
 const borrowCardSchema = new Schema<IBorrowCard>(
     {
-        bookId: [
-            {
-                type: Schema.Types.ObjectId,
-                required: true,
-                ref: 'Book'
-            }
-        ],
+        bookId: {
+            type: Schema.Types.ObjectId,
+            required: true,
+            ref: 'Book'
+        },
         userId: {
             type: Schema.Types.ObjectId,
             required: true,
@@ -29,7 +27,7 @@ const borrowCardSchema = new Schema<IBorrowCard>(
         },
         borrowDate: {
             type: Date,
-            required: true
+            default: new Date()
         },
         borrowTime: {
             type: Number,

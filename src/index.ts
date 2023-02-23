@@ -7,6 +7,7 @@ import authRouter from './routes/AuthRoute';
 import adminRouter from './routes/AdminRoute';
 import userRouter from './routes/UserRoute';
 import bookRouter from './routes/BookRoute';
+import borrowCardRouter from './routes/BorrowCardRoute';
 const app = express();
 const PORT = config.server.port;
 
@@ -48,6 +49,7 @@ app.use('/api/v1/authenticate', authRouter);
 app.use('/api/v1/admins', adminRouter);
 app.use('/api/v1/users', userRouter);
 app.use('/api/v1/books', bookRouter);
+app.use('/api/v1/borrowed-information', borrowCardRouter);
 app.get('/', (req, res) => {
     return res.status(200).json({ message: 'Server is OK' });
 });
