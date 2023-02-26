@@ -1,0 +1,13 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const verifyToken_1 = require("../middleware/authentication/verifyToken");
+const authorization_1 = require("../middleware/authentication/authorization");
+const AdminController_1 = require("../controllers/AdminController");
+const router = (0, express_1.Router)();
+router.get('/', verifyToken_1.authenticate, (0, authorization_1.authorizeRole)('ROOT'), AdminController_1.adminController.getAllAdmins);
+router.get('/:adminId', verifyToken_1.authenticate, (0, authorization_1.authorizeRole)('ROOT'), AdminController_1.adminController.getAdmin);
+router.post('/addAdmin', verifyToken_1.authenticate, (0, authorization_1.authorizeRole)('ROOT'), AdminController_1.adminController.createAdmin);
+router.put('/editAdmin/:adminId', verifyToken_1.authenticate, (0, authorization_1.authorizeRole)('ROOT'), AdminController_1.adminController.updateAdmin);
+router.delete('/deleteAdmin/:adminId', verifyToken_1.authenticate, (0, authorization_1.authorizeRole)('ROOT'), AdminController_1.adminController.deleteAdmin);
+exports.default = router;

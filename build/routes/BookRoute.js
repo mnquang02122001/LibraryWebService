@@ -1,0 +1,13 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const verifyToken_1 = require("./../middleware/authentication/verifyToken");
+const authorization_1 = require("../middleware/authentication/authorization");
+const BookController_1 = require("../controllers/BookController");
+const router = (0, express_1.Router)();
+router.get('/:page/:size', verifyToken_1.authenticate, (0, authorization_1.authorizeRole)('ADMIN'), BookController_1.bookController.getAllBooks);
+router.get('/:bookId', verifyToken_1.authenticate, (0, authorization_1.authorizeRole)('ADMIN'), BookController_1.bookController.getBook);
+router.post('/addBook', verifyToken_1.authenticate, (0, authorization_1.authorizeRole)('ADMIN'), BookController_1.bookController.createBook);
+router.put('/editBook/:bookId', verifyToken_1.authenticate, (0, authorization_1.authorizeRole)('ADMIN'), BookController_1.bookController.updateBook);
+router.delete('/deleteBook/:bookId', verifyToken_1.authenticate, (0, authorization_1.authorizeRole)('ADMIN'), BookController_1.bookController.deleteBook);
+exports.default = router;
